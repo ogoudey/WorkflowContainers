@@ -24,6 +24,7 @@ class Y pushedToECR
 class X cloudBatch
 class X1 cloudBatch
 class X2 cloudBatch
+class X3 cloudBatch
 ```
 
 Local test doesn't mean much. I don't test these containers locally. I might test some of its software locally.
