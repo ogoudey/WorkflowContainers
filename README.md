@@ -10,24 +10,33 @@ graph LR
     X2([SyncS3BucketCommand]) --- Y
     X3([TestLongBlockCommand]) --- Y
 
+    %% Legend
+    subgraph Legend
+        L1[Environment Created]
+        L2[Pushed to ECR]
+        L3[Cloud Batch]
+        L4[Cloud Test]
+    end
+
 %% Define Color Schemes for Statuses
 classDef environmentCreated fill:#2563eb,stroke:#1d4ed8,color:#fff
 classDef pushedToECR fill:#0d9488,stroke:#0f766e,color:#fff
 classDef cloudBatch fill:#d97706,stroke:#b45309,color:#fff
 classDef cloudTest fill:#16a34a,stroke:#15803d,color:#fff
 
-class C environmentCreated
-class H environmentCreated
 class Z environmentCreated
 class Y pushedToECR
 
-class X cloudBatch
-class X1 cloudBatch
-class X2 cloudBatch
-class X3 cloudBatch
-```
+class X cloudTest
+class X1 cloudTest
+class X2 cloudTest
+class X3 cloudTest
 
-Local test doesn't mean much. I don't test these containers locally. I might test some of its software locally.
+class L1 environmentCreated
+class L2 pushedToECR
+class L3 cloudBatch
+class L4 cloudTest
+```
 
 ### This is how you build a container and push to AWS ECR.
 ```bash
