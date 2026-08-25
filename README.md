@@ -1,11 +1,11 @@
 # Wave 1 Blocks
 ```mermaid
 graph LR
-    A([FinetuneGroot]) --- B(IsaacSimContainer)--- C[heavy p.large]
-    D([HandRemoval]) --- E(HandRemovalContainer) --- C
-    F([LeRobotConversion]) --- G(LeRobotConversionContainer) --- H[medium unsure]
-    I([VideoEdit]) --- J(VideoEditContainer) --- H
-    X([TestBlockCommand]) --- Y(TestContainer) --- Z[minimal]
+    A([FinetuneGroot]) --- B(IsaacSim)--- C[heavy p.large]
+    D([HandRemoval]) --- E(HandRemoval) --- C
+    F([LeRobotConversion]) --- G(LeRobotConversion) --- H[medium]
+    I([VideoEdit]) --- J(VideoEdit) --- H
+    X([TestBlockCommand]) --- Y(Test) --- Z[minimal]
     X1([TestAWSCommand]) --- Y
     X2([SyncS3BucketCommand]) --- Y
     X3([TestLongBlockCommand]) --- Y
@@ -25,7 +25,9 @@ classDef cloudBatch fill:#d97706,stroke:#b45309,color:#fff
 classDef cloudTest fill:#16a34a,stroke:#15803d,color:#fff
 
 class Z environmentCreated
+class H environmentCreated
 class Y pushedToECR
+class G pushedToECR
 
 class X cloudTest
 class X1 cloudTest

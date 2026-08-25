@@ -15,6 +15,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
 
-# Verify it works at build time (optional but useful)
+# Verify it works at build time
 RUN aws --version
 

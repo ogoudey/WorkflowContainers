@@ -26,5 +26,26 @@ RUN git clone https://github.com/huggingface/lerobot.git
 WORKDIR /opt/lerobot
 RUN pip install -e ".[training]"
 
-WORKDIR /workspace
+WORKDIR /
+# Install AWS CLI v2
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        curl \
+        unzip \
+        ca-certificates \
+    && curl -sSL "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
+    && unzip -q awscliv2.zip \
+    && ./aws/install \
+    && rm -rf awscliv2.zip aws \
+    && apt-get purge -y unzip \
+    && apt-get autoremove -y \
+    && rm -rf /var/lib/apt/lists/*
+
+# Verify it works at build time
+RUN aws --version
+
+RUN git clone https://github.com/ogoudey/Delphi-Python-Utilities.git
+WORKDIR /Delphi-Python-Utilities
+RUN pip install numpy pandas
+
+
 CMD ["/bin/bash"]
