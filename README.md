@@ -4,8 +4,8 @@ graph LR
     A([FinetuneGroot]) --- B(IsaacSim)--- C[heavy p.large]
     D([HandRemoval]) --- E(HandRemoval) --- C
     F([LeRobotConversion]) --- G(LeRobotConversion) --- H[medium]
-    I([SyncTo30]) --- G
-    K([CompositeCommand]) --- G
+    I([SyncTo30]) --- O(VideoEdit) --- S[small]
+    K([CompositeCommand]) --- O
     X([TestBlockCommand]) --- Y(Test) --- Z[minimal]
     X1([TestAWSCommand]) --- Y
     X2([SyncS3BucketCommand]) --- Y
@@ -30,13 +30,14 @@ class Z environmentCreated
 class H environmentCreated
 class Y pushedToECR
 class G pushedToECR
-
+class O pushedToECR
+class S environmentCreated
 class X cloudTest
 class X1 cloudTest
 class X2 cloudTest
 class X3 cloudTest
-class I cloudBatch
-class K cloudBatch
+class I cloudTest
+class K cloudTest
 class F cloudBatch
 
 class L1 environmentCreated
