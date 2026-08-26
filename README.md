@@ -4,7 +4,8 @@ graph LR
     A([FinetuneGroot]) --- B(IsaacSim)--- C[heavy p.large]
     D([HandRemoval]) --- E(HandRemoval) --- C
     F([LeRobotConversion]) --- G(LeRobotConversion) --- H[medium]
-    I([VideoEdit]) --- J(VideoEdit) --- H
+    I([SyncTo30]) --- G
+    K([CompositeCommand]) --- G
     X([TestBlockCommand]) --- Y(Test) --- Z[minimal]
     X1([TestAWSCommand]) --- Y
     X2([SyncS3BucketCommand]) --- Y
@@ -17,6 +18,7 @@ graph LR
         L3[Cloud Batch]
         L4[Cloud Test]
     end
+
 
 %% Define Color Schemes for Statuses
 classDef environmentCreated fill:#2563eb,stroke:#1d4ed8,color:#fff
@@ -33,6 +35,9 @@ class X cloudTest
 class X1 cloudTest
 class X2 cloudTest
 class X3 cloudTest
+class I cloudBatch
+class K cloudBatch
+class F cloudBatch
 
 class L1 environmentCreated
 class L2 pushedToECR
