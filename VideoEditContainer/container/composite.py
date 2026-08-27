@@ -36,11 +36,12 @@ def main(dataset: Path, delete_originals: bool = False):
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python3 composite.py <dataset_path> <bool: delete_originals = false> # Needs `camera_1` in camera path, needs `overlay_1` in overlay path")
+        print("Usage: python3 composite.py <dataset_path> --delete_originals # Needs `camera_1` in camera path, needs `overlay_1` in overlay path")
         sys.exit(1)
 
     root = Path(sys.argv[1])
     if len(sys.argv) > 2:
-        main(root, delete_originals=sys.argv[2].lower() == "true")
+        delete_originals = "--delete_originals" in sys.argv
+        main(root, delete_originals=delete_originals)
     else:
         main(root)

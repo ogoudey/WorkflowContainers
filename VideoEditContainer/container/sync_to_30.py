@@ -18,22 +18,23 @@ def sync_video_to_30_fps(video_path: Path, delete_original: bool = False):
     if delete_original:
         video_path.unlink()
 
-def main(dataset: Path, delete_original: bool = False):
+def main(dataset: Path, delete_originals: bool = False):
     cnt = 0
     for path in dataset.iterdir():
         if path.is_file() and path.suffix == ".mp4" and not path.name.endswith(".30fps.mp4"):
             cnt += 1
-            sync_video_to_30_fps(path, delete_original)
+            sync_video_to_30_fps(path, delete_originals)
     print(f"Synced {cnt} videos to 30 fps in {dataset}")
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
-        print("Usage: python3 sync_to_30.py <dataset_path> <bool: delete_original = false>")
+        print("Usage: python3 sync_to_30.py <dataset_path> <--delete_originals>")
         sys.exit(1)
 
     root = Path(sys.argv[1])
     if len(sys.argv) > 2:
-        main(root, delete_original=sys.argv[2].lower() == "true")
+        delete_originals = "--delete_originals" in sys.argv
+        main(root, delete_originals=delete_originals)
     else:
         main(root)
 
