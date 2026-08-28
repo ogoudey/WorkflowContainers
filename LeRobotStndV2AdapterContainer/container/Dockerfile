@@ -21,10 +21,10 @@ RUN /opt/miniforge3/bin/conda create -y -n lerobot python=3.12 \
 
 # Install lerobot from source
 WORKDIR /opt
-RUN git clone --branch v0.2.0 https://github.com/huggingface/lerobot.git
-# (using `--branch v0.2.0`  for a datasets v2 branch)
-WORKDIR /opt/lerobot
-RUN pip install -e ".[training]"
+RUN git clone https://github.com/huggingface/lerobot.git && \
+    cd lerobot && \
+    git checkout v0.4.4 && \
+    pip install -e .
 
 WORKDIR /
 # Install AWS CLI v2

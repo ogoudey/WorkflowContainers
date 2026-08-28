@@ -3,7 +3,10 @@
 graph LR
     A([FinetuneGroot]) --- B(IsaacSim)--- C[heavy p.large]
     D([HandRemoval]) --- E(HandRemoval) --- C
-    F([LeRobotConversion]) --- G(LeRobotConversion) --- H[medium]
+     H[medium GPU]
+    F([LeRobotConversionJob]) --- G2(LeRobotV2Adapter) --- S
+    F --- G1(LeRobotV3Adapter) --- S
+
     I([SyncTo30]) --- O(VideoEdit) --- S[small]
     K([CompositeCommand]) --- O
     X([TestBlockCommand]) --- Y(Test) --- Z[minimal]
@@ -31,6 +34,10 @@ class H environmentCreated
 class Y pushedToECR
 class G pushedToECR
 class O pushedToECR
+class G2 pushedToECR
+class G1 pushedToECR
+class B pushedToECR
+class C environmentCreated
 class S environmentCreated
 class X cloudTest
 class X1 cloudTest
